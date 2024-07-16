@@ -15,3 +15,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+/// The `BuildContext` is an essential part of the Flutter framework. It is a handle to the location of a widget
+/// in the widget tree and provides access to various features and properties related to the widget's position
+/// in the tree.

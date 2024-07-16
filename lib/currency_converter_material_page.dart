@@ -26,6 +26,7 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               ),
               decoration: InputDecoration(
                 hintText: 'Enter amount in INR',
+                prefixText: '₹ ',
               ),
             ),
           ],
