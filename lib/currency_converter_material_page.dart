@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
@@ -25,10 +26,18 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 color: Colors.white,
               ),
               decoration: InputDecoration(
-                hintText: 'Enter amount in INR',
-                prefixIcon: Icon(Icons.monetization_on_outlined),
-                prefixIconColor: Colors.white,
-              ),
+                  hintText: 'Enter amount in INR',
+                  hintStyle:
+                      TextStyle(color: Color.fromARGB(244, 158, 156, 156)),
+                  prefixIcon: Icon(Icons.monetization_on_outlined),
+                  prefixIconColor: Colors.black,
+                  filled: true,
+                  fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                    width: 2.0,
+                    style: BorderStyle.solid,
+                  ))),
             ),
           ],
         ),
