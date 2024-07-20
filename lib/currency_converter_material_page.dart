@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 class CurrencyConverterMaterialPage extends StatelessWidget {
   const CurrencyConverterMaterialPage({super.key}); // 1
@@ -23,21 +20,32 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
             ),
             TextField(
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
               ),
               decoration: InputDecoration(
-                  hintText: 'Enter amount in INR',
-                  hintStyle:
-                      TextStyle(color: Color.fromARGB(244, 158, 156, 156)),
-                  prefixIcon: Icon(Icons.monetization_on_outlined),
-                  prefixIconColor: Colors.black,
-                  filled: true,
-                  fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                    width: 2.0,
-                    style: BorderStyle.solid,
-                  ))),
+                hintText: 'Enter amount in USD',
+                hintStyle: TextStyle(color: Color.fromARGB(244, 158, 156, 156)),
+                prefixIcon: Icon(Icons.monetization_on_outlined),
+                prefixIconColor: Colors.black,
+                filled: true,
+                fillColor: Colors.white,
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 2.0,
+                      style: BorderStyle.solid,
+                    ),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(60),
+                    )),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                  width: 2.0,
+                  style: BorderStyle.solid,
+                )),
+              ),
+              keyboardType: TextInputType.numberWithOptions(
+                decimal: true,
+              ),
             ),
           ],
         ),
