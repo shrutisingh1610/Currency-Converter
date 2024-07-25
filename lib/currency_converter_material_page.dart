@@ -69,6 +69,9 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                   foregroundColor: WidgetStateProperty.all(
                     Colors.white,
                   ),
+                  shape: WidgetStyleProperty.all(
+                    const StadiumBorder(),
+                  ),
                 ),
                 child: const Text('Convert'),
               ),
