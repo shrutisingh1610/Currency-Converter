@@ -1,81 +1,99 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class CurrencyConverterMaterialPage extends StatelessWidget {
-  // Removed the const keyword here
+class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
 
   @override
+  State<CurrencyConverterMaterialPage> createState() =>
+      _CurrencyConverterMaterialPageState();
+}
+
+class _CurrencyConverterMaterialPageState
+    extends State<CurrencyConverterMaterialPage> {
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
+
+  void convert() {
+    result = double.parse(textEditingController.text) * 83.72;
+    setState(() {});
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    const border = OutlineInputBorder(
-      borderSide: BorderSide(
+    final border = OutlineInputBorder(
+      borderSide: const BorderSide(
         width: 2.0,
         style: BorderStyle.solid,
       ),
-      borderRadius: BorderRadius.all(
-        Radius.circular(40),
-      ),
+      borderRadius: BorderRadius.circular(38),
     );
 
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.blueGrey,
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        elevation: 0,
         title: const Text('Currency Converter'),
         centerTitle: true,
-        backgroundColor: Colors.grey,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              '0',
-              style: TextStyle(
-                fontSize: 120,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'INR ${result != 0 ? result.toStringAsFixed(3) : result.toStringAsFixed(0)}',
+                style: const TextStyle(
+                  fontSize: 55,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(9.0),
-              child: TextField(
-                style: TextStyle(
+              TextField(
+                controller: textEditingController,
+                style: const TextStyle(
                   color: Colors.black,
                 ),
                 decoration: InputDecoration(
-                  hintText: 'Enter amount in USD',
-                  hintStyle: TextStyle(
-                    color: Color.fromARGB(244, 158, 156, 156),
+                  hintText: 'Enter the amount in USD',
+                  hintStyle: const TextStyle(
+                    color: Colors.black,
                   ),
-                  prefixIcon: Icon(Icons.monetization_on_outlined),
+                  prefixIcon: const Icon(Icons.monetization_on_outlined),
                   prefixIconColor: Colors.black,
                   filled: true,
                   fillColor: Colors.white,
                   focusedBorder: border,
                   enabledBorder: border,
                 ),
-                keyboardType: TextInputType.numberWithOptions(
+                keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(25.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  print(TextEditingController().text);
-                  print(TextEditingController().text * 82);
-                },
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: convert,
                 style: TextButton.styleFrom(
-                  shape: const StadiumBorder(),
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
-                  fixedSize: const Size(130, 45),
+                  minimumSize:
+                      const Size(150, 50), // Set the minimum width and height
+                  maximumSize: const Size(190, 60),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(38),
+                  ),
                 ),
                 child: const Text('Convert'),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
