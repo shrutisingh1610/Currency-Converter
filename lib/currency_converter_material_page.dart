@@ -19,6 +19,11 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.grey,
+      appBar: AppBar(
+        title: const Text('Currency Converter'),
+        centerTitle: true,
+        backgroundColor: Colors.grey,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -28,11 +33,11 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 120,
                 fontWeight: FontWeight.bold,
-                color: Color.fromARGB(190, 132, 120, 120),
+                color: Colors.white,
               ),
             ),
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(9.0),
               child: TextField(
                 style: TextStyle(
                   color: Colors.black,
@@ -56,22 +61,16 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(25.0),
-              child: TextButton(
+              child: ElevatedButton(
                 onPressed: () {
-                  if (kDebugMode) {
-                    print('Pressed');
-                  }
+                  print(TextEditingController().text);
+                  print(TextEditingController().text * 82);
                 },
-                style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(
-                    Colors.black,
-                  ),
-                  foregroundColor: WidgetStateProperty.all(
-                    Colors.white,
-                  ),
-                  shape: WidgetStyleProperty.all(
-                    const StadiumBorder(),
-                  ),
+                style: TextButton.styleFrom(
+                  shape: const StadiumBorder(),
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  fixedSize: const Size(130, 45),
                 ),
                 child: const Text('Convert'),
               ),
